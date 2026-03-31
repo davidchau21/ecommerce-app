@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 210 20% 98%; /* #f8f9fa */
+        --foreground: 222 47% 11%;
+        --primary: 221 100% 39%; /* #003ec7 */
+        --primary-foreground: 210 40% 98%;
+        --surface: 210 20% 98%;
+        --surface-container-highest: 210 10% 89%; /* #e1e3e4 */
+    }
+
+    body {
+        @apply bg-[#f8f9fa] text-slate-900 antialiased;
+        font-family: 'Inter', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Manrope', sans-serif;
+    }
+}
+
+@layer components {
+    .premium-card {
+        @apply bg-white rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md;
+    }
+
+    .tonal-surface {
+        @apply bg-[#e1e3e4] rounded-xl transition-colors duration-300;
+    }
+
+    .pill-button {
+        @apply px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98];
+    }
+}

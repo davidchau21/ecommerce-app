@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class RepositoryServiceProvider extends ServiceProvider
+{
+    /**
+     * Register services.
+     */
+    public function register(): void
+    {
+        $this->app->bind(
+            \App\Repositories\Contracts\CategoryRepositoryInterface::class,
+            \App\Repositories\CategoryRepository::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Contracts\ProductRepositoryInterface::class,
+            \App\Repositories\ProductRepository::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Contracts\CartRepositoryInterface::class,
+            \App\Repositories\CartRepository::class
+        );
+
+        $this->app->bind(
+            \App\Repositories\Contracts\OrderRepositoryInterface::class,
+            \App\Repositories\OrderRepository::class
+        );
+    }
+
+    /**
+     * Bootstrap services.
+     */
+    public function boot(): void
+    {
+        //
+    }
+}
