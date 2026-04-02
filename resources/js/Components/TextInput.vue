@@ -18,9 +18,9 @@ defineExpose({ focus: () => input.value.focus() });
 </script>
 
 <template>
-    <div class="tonal-surface p-1">
+    <div class="tonal-surface">
         <input
-            class="w-full bg-white rounded-lg border-none focus:ring-2 focus:ring-blue-600 p-4 font-medium text-slate-900 transition-all placeholder:text-slate-300"
+            class="w-full px-5 py-4 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-200 outline-none text-on-surface placeholder:text-on-surface-variant/40"
             v-model="model"
             ref="input"
         />

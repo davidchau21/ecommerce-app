@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | CURATOR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#b7c4ff",
+              "inverse-on-surface": "#f0f1f2",
+              "outline": "#737688",
+              "secondary": "#4459a8",
+              "on-error-container": "#93000a",
+              "surface-dim": "#d9dadb",
+              "on-secondary-fixed": "#001452",
+              "on-surface": "#191c1d",
+              "on-tertiary-container": "#ffddd5",
+              "tertiary-container": "#bf3003",
+              "on-tertiary-fixed": "#3c0800",
+              "inverse-surface": "#2e3132",
+              "tertiary-fixed-dim": "#ffb4a1",
+              "surface-container-highest": "#e1e3e4",
+              "on-background": "#191c1d",
+              "on-tertiary-fixed-variant": "#891e00",
+              "secondary-fixed": "#dde1ff",
+              "error": "#ba1a1a",
+              "on-primary-fixed": "#001452",
+              "surface": "#f8f9fa",
+              "on-error": "#ffffff",
+              "on-secondary-container": "#253b89",
+              "background": "#f8f9fa",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#dfe3ff",
+              "surface-container-low": "#f3f4f5",
+              "inverse-primary": "#b7c4ff",
+              "surface-container": "#edeeef",
+              "primary": "#003ec7",
+              "on-primary": "#ffffff",
+              "tertiary": "#952200",
+              "secondary-fixed-dim": "#b7c4ff",
+              "surface-container-high": "#e7e8e9",
+              "secondary-container": "#95aafe",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "tertiary-fixed": "#ffdbd2",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed-variant": "#0038b6",
+              "on-secondary-fixed-variant": "#2b418f",
+              "error-container": "#ffdad6",
+              "on-surface-variant": "#434656",
+              "surface-variant": "#e1e3e4",
+              "primary-container": "#0052ff",
+              "primary-fixed": "#dde1ff",
+              "outline-variant": "#c3c5d9",
+              "surface-tint": "#004ced"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "1rem", "xl": "1.25rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8f9fa;
+        color: #191c1d;
+      }
+      h1, h2, h3, h4 {
+        font-family: 'Manrope', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar: Task Focused Suppression applied (Simplified version for Checkout) -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-slate-900/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-on-surface dark:text-white uppercase font-headline">
+                CURATOR
+            </div>
+<div class="flex items-center gap-4 text-on-surface-variant font-label text-sm uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">lock</span>
+                Secure Checkout
+            </div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto min-h-screen">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Left Column: Shipping & Info -->
+<div class="lg:col-span-7">
+<header class="mb-12">
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2 font-headline">Shipping details</h1>
+<p class="text-on-surface-variant font-body">Please enter your delivery information to continue.</p>
+</header>
+<form class="space-y-10">
+<!-- Identity Section -->
+<section>
+<div class="flex items-center gap-3 mb-6">
+<span class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm">1</span>
+<h2 class="text-xl font-bold font-headline">Contact information</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label px-1">Full Name</label>
+<input class="w-full px-5 py-4 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-200 outline-none" placeholder="Alex Sterling" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label px-1">Phone Number</label>
+<input class="w-full px-5 py-4 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-200 outline-none" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+</section>
+<!-- Shipping Section -->
+<section>
+<div class="flex items-center gap-3 mb-6">
+<span class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm">2</span>
+<h2 class="text-xl font-bold font-headline">Shipping address</h2>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label px-1">Street Address</label>
+<input class="w-full px-5 py-4 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-200 outline-none" placeholder="123 Gallery Way, Suite 400" type="text"/>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+<div class="space-y-2 md:col-span-1">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label px-1">City</label>
+<input class="w-full px-5 py-4 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-200 outline-none" placeholder="New York" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label px-1">State / Province</label>
+<input class="w-full px-5 py-4 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-200 outline-none" placeholder="NY" type="text"/>
+</div>
+<div class="space-y-2 col-span-2 md:col-span-1">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label px-1">ZIP / Postal Code</label>
+<input class="w-full px-5 py-4 bg-surface-container-high border-none rounded-lg focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-200 outline-none" placeholder="10001" type="text"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Payment Preview (Placeholder) -->
+<section class="opacity-50">
+<div class="flex items-center gap-3 mb-6">
+<span class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-bold text-sm border border-outline-variant/15">3</span>
+<h2 class="text-xl font-bold font-headline">Payment method</h2>
+</div>
+<div class="p-6 border border-outline-variant/15 rounded-lg border-dashed text-center">
+<p class="text-sm font-label uppercase tracking-widest text-on-surface-variant">Complete shipping info to unlock payment</p>
+</div>
+</section>
+</form>
+</div>
+<!-- Right Column: Order Summary -->
+<div class="lg:col-span-5">
+<div class="sticky top-32">
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-sm ring-1 ring-outline-variant/10">
+<h2 class="text-2xl font-bold font-headline mb-8 pb-6 border-b border-outline-variant/10">Order summary</h2>
+<!-- Item List -->
+<div class="space-y-8 mb-8">
+<div class="flex gap-4">
+<div class="w-20 h-24 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Minimalist white designer watch with silver accents on a clean architectural background with soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFQ1U5GfYADTBgCbXKEPMb9NnafohUqeXI8CSea5n2SZAV_L3bJ3LwYO69bsN0SgDyuEsuRwdoSEz3_p3l5-Q1PHKr77zLdvvX0oNiXbKsMOaWzm810IrMqbvgytx8-xT-n-siaLItjONruuew4l1Ic-UsAUkaERR2azwAFNQG2RIoSWS3djPJ4E0ZvhW1cvQ5Fu4Ah40VtYScHnOEws9tbjx-26t0FKnkywmBQLb6Saykv7wfnSzOW3EYJYFtex8u4qLArcErTQA"/>
+</div>
+<div class="flex-grow flex flex-col justify-between py-1">
+<div>
+<h4 class="font-bold text-on-surface font-headline leading-tight">Archetype Wristwatch</h4>
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant mt-1">Silver / Leather</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium text-on-surface-variant">Qty: 1</span>
+<span class="font-bold text-primary font-headline">$285.00</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-20 h-24 bg-surface-container rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Premium studio headphones with matte finish and luxury leather earcups in a high-key lighting setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfrq_oloKtXDL82ChUsaUy9iMLrkU2ew23ckTUMBtkvTbYgQIftkKFAzL2NekfYFMIThkquMjEshncNzYmvBRq761mhWI-lcCpGDvAPG3GuGpupM7dmq2wT3Uz-LfIgEtb_K3haprYlk2vtiQASj7dr07FnQJUk2YrMzFIBXFUWh-BcdW-Ur7kGmI0p1pWU9FHtD29T9WnmJnH3eLC211IwKNXJtLAs4Z-Y8AY8jy1M9n9cQ1-lnrNJMf7LYm6BsnEGBrioT3ndDo"/>
+</div>
+<div class="flex-grow flex flex-col justify-between py-1">
+<div>
+<h4 class="font-bold text-on-surface font-headline leading-tight">Studio Over-Ear Audio</h4>
+<p class="text-xs font-label uppercase tracking-widest text-on-surface-variant mt-1">Matte Black</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium text-on-surface-variant">Qty: 1</span>
+<span class="font-bold text-primary font-headline">$420.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Calculations -->
+<div class="space-y-4 pt-8 border-t border-outline-variant/10">
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant font-medium">Subtotal</span>
+<span class="text-on-surface font-bold font-headline">$705.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant font-medium">Shipping</span>
+<span class="text-on-surface font-bold font-headline">Calculated next</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-on-surface-variant font-medium">Tax</span>
+<span class="text-on-surface font-bold font-headline">$56.40</span>
+</div>
+<div class="flex justify-between text-xl font-bold pt-4 text-on-surface">
+<span class="font-headline">Total</span>
+<span class="font-headline text-primary">$761.40</span>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full mt-10 bg-gradient-to-br from-primary to-primary-container text-on-primary py-5 rounded-full font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/20 flex items-center justify-center gap-2 group">
+                            Place Order
+                            <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="mt-6 flex items-center justify-center gap-2 text-[10px] font-label uppercase tracking-[0.2em] text-on-surface-variant opacity-60">
+<span class="material-symbols-outlined text-xs">verified_user</span>
+                            Encrypted 256-bit security
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer: Tonal Shift Separation -->
+<footer class="w-full border-t border-outline-variant/15 bg-surface-container dark:bg-slate-950">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 px-8 py-12 max-w-7xl mx-auto">
+<div class="md:col-span-1">
+<div class="text-lg font-bold text-on-surface dark:text-white mb-4 uppercase font-headline">CURATOR</div>
+<p class="text-xs text-on-surface-variant dark:text-slate-500 font-body leading-relaxed">
+                    Elevating the digital marketplace through intentional design and uncompromising quality.
+                </p>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="text-[10px] font-bold uppercase tracking-widest text-primary mb-2">Service</h5>
+<a class="text-xs text-on-surface-variant dark:text-slate-500 hover:text-primary dark:hover:text-blue-300 transition-opacity uppercase tracking-widest" href="#">About</a>
+<a class="text-xs text-on-surface-variant dark:text-slate-500 hover:text-primary dark:hover:text-blue-300 transition-opacity uppercase tracking-widest" href="#">Help</a>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="text-[10px] font-bold uppercase tracking-widest text-primary mb-2">Legal</h5>
+<a class="text-xs text-on-surface-variant dark:text-slate-500 hover:text-primary dark:hover:text-blue-300 transition-opacity uppercase tracking-widest" href="#">Terms</a>
+<a class="text-xs text-on-surface-variant dark:text-slate-500 hover:text-primary dark:hover:text-blue-300 transition-opacity uppercase tracking-widest" href="#">Privacy</a>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="text-[10px] font-bold uppercase tracking-widest text-primary mb-2">Logistics</h5>
+<a class="text-xs text-on-surface-variant dark:text-slate-500 hover:text-primary dark:hover:text-blue-300 transition-opacity uppercase tracking-widest" href="#">Shipping</a>
+</div>
+</div>
+<div class="px-8 py-6 border-t border-outline-variant/10 max-w-7xl mx-auto text-center">
+<span class="text-[10px] font-label uppercase tracking-widest text-on-surface-variant/60">© 2024 CURATOR E-COMMERCE. ALL RIGHTS RESERVED.</span>
+</div>
+</footer>
+</body></html>

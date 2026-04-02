@@ -1,5 +1,6 @@
 <script setup>
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import MainLayout from '@/Layouts/MainLayout.vue';
 
 const props = defineProps({
     cartItems: Array,
@@ -26,83 +27,87 @@ const updateQuantity = (id, quantity) => {
 <template>
     <Head title="Shopping Bag" />
 
-    <div class="min-h-screen bg-[#f8f9fa]">
-        <!-- Navbar -->
-        <nav class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 py-6 border-b border-white/20">
-            <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-slate-900">
-                <Link href="/" class="text-2xl font-black tracking-tighter">THE DIGITAL CURATOR</Link>
-                <div class="flex gap-8 items-center uppercase text-[10px] tracking-widest font-bold">
-                    <Link :href="route('products.index')" class="hover:text-blue-600">Shop All</Link>
-                    <Link href="#" class="text-blue-600">Cart ({{ cartItems?.length || 0 }})</Link>
-                </div>
+    <MainLayout>
+        <main class="pt-32 pb-24 max-w-7xl mx-auto px-8">
+            <div class="mb-16">
+                <p class="font-label text-xs uppercase tracking-widest text-primary font-bold mb-2">Shopping Bag</p>
+                <h1 class="text-5xl font-extrabold tracking-tighter text-on-surface">Your Selection</h1>
             </div>
-        </nav>
-
-        <main class="max-w-7xl mx-auto px-6 py-20">
-            <h1 class="text-5xl font-black text-slate-900 tracking-tight leading-none mb-16">Shopping Bag</h1>
 
             <div v-if="!cartItems || cartItems.length === 0" class="text-center py-20">
-                <p class="text-slate-400 text-lg mb-8 uppercase tracking-widest font-bold">Your bag is empty.</p>
-                <Link :href="route('products.index')" class="pill-button bg-slate-900 text-white inline-block">Start Shopping</Link>
+                <p class="text-on-surface-variant text-lg mb-8 uppercase tracking-widest font-bold">Your bag is empty.</p>
+                <Link :href="route('products.index')" class="bg-gradient-to-br from-primary to-primary-container text-white py-4 px-6 rounded-full font-bold tracking-tight inline-block hover:opacity-90 transition-opacity">Start Shopping</Link>
             </div>
 
-            <div v-else class="grid grid-cols-1 lg:grid-cols-3 gap-16">
-                <!-- Items List -->
-                <div class="lg:col-span-2 space-y-10">
-                    <div v-for="item in cartItems" :key="item.id" class="flex gap-8 pb-10 border-b border-slate-200">
-                        <div class="w-32 h-32 bg-white rounded-2xl overflow-hidden shrink-0 shadow-sm">
-                            <img :src="item.product.image_url" class="w-full h-full object-cover" />
+            <div v-else class="flex flex-col lg:flex-row gap-16">
+                <!-- Cart Items List -->
+                <div class="flex-grow space-y-12">
+                    <div v-for="item in cartItems" :key="item.id" class="flex flex-col md:flex-row gap-8 items-start md:items-center group border-b border-surface-container-high pb-8">
+                        <div class="w-full md:w-32 aspect-[3/4] bg-surface-container rounded-lg overflow-hidden shrink-0">
+                            <img :src="item.product.image_url" :alt="item.product.name" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
                         </div>
-                        <div class="flex-1 flex flex-col justify-between">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="text-xl font-bold text-slate-900">{{ item.product.name }}</h3>
-                                    <p class="text-xs text-slate-400 uppercase font-bold tracking-widest">{{ item.product.category.name }}</p>
-                                </div>
-                                <span class="font-bold text-slate-900">${{ item.product.price }}</span>
+                        <div class="flex-grow w-full">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="text-xl font-bold tracking-tight">{{ item.product.name }}</h3>
+                                <span class="text-lg font-semibold">${{ item.product.price }}</span>
                             </div>
-                            <div class="flex justify-between items-center mt-4">
-                                <div class="tonal-surface flex items-center px-3 py-1 gap-4 scale-90 origin-left">
-                                    <button @click="updateQuantity(item.id, item.quantity - 1)" class="w-6 h-6 rounded-full hover:bg-white transition-colors">-</button>
-                                    <span class="font-bold text-slate-900">{{ item.quantity }}</span>
-                                    <button @click="updateQuantity(item.id, item.quantity + 1)" class="w-6 h-6 rounded-full hover:bg-white transition-colors">+</button>
+                            <p class="text-on-surface-variant text-sm mb-6 max-w-sm">{{ item.product.category?.name }}</p>
+                            <div class="flex items-center space-x-8">
+                                <!-- Quantity Selector -->
+                                <div class="flex items-center bg-surface-container-high rounded-full px-4 py-2">
+                                    <button @click="updateQuantity(item.id, item.quantity - 1)" class="hover:text-primary transition-colors flex items-center">
+                                        <span class="material-symbols-outlined text-lg">remove</span>
+                                    </button>
+                                    <span class="mx-6 font-bold text-sm">{{ item.quantity }}</span>
+                                    <button @click="updateQuantity(item.id, item.quantity + 1)" class="hover:text-primary transition-colors flex items-center">
+                                        <span class="material-symbols-outlined text-lg">add</span>
+                                    </button>
                                 </div>
-                                <button @click="removeItem(item.id)" class="text-[10px] uppercase font-black tracking-widest text-red-500 hover:text-red-700">Remove</button>
+                                <!-- Remove Button -->
+                                <button @click="removeItem(item.id)" class="flex items-center text-on-surface-variant hover:text-tertiary transition-colors text-xs uppercase tracking-widest font-bold">
+                                    <span class="material-symbols-outlined text-sm mr-2">delete</span>
+                                    Remove
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Summary -->
-                <aside class="space-y-8">
-                    <div class="premium-card p-8">
-                        <h2 class="text-xl font-black text-slate-900 tracking-tight mb-8">Summary</h2>
+                <!-- Checkout Sidebar -->
+                <aside class="w-full lg:w-[400px]">
+                    <div class="sticky top-32 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/15">
+                        <h2 class="text-2xl font-bold tracking-tight mb-8">Order Summary</h2>
                         <div class="space-y-4 mb-8">
-                            <div class="flex justify-between text-sm text-slate-500">
-                                <span>Subtotal</span>
-                                <span>${{ total }}</span>
+                            <div class="flex justify-between items-center text-on-surface-variant">
+                                <span class="text-sm font-medium">Subtotal</span>
+                                <span class="text-sm font-bold">${{ total }}</span>
                             </div>
-                            <div class="flex justify-between text-sm text-slate-500">
-                                <span>Shipping</span>
-                                <span>Calculated at checkout</span>
+                            <div class="flex justify-between items-center text-on-surface-variant">
+                                <span class="text-sm font-medium">Shipping</span>
+                                <span class="text-sm font-bold">Calculated at checkout</span>
                             </div>
-                            <div class="pt-4 border-t border-slate-200 flex justify-between font-black text-slate-900 text-lg">
-                                <span>Total</span>
-                                <span>${{ total }}</span>
+                            <div class="pt-4 border-t border-outline-variant/15 flex justify-between items-center">
+                                <span class="text-lg font-bold">Total</span>
+                                <span class="text-2xl font-extrabold tracking-tighter text-primary">${{ total }}</span>
                             </div>
                         </div>
-                        <Link :href="route('checkout.index')" class="pill-button bg-slate-900 text-white w-full text-center block py-4 uppercase tracking-widest font-black">
-                            Checkout
+                        <Link :href="route('checkout.index')" class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-4 px-6 rounded-full font-bold tracking-tight hover:opacity-90 transition-opacity flex items-center justify-center space-x-2 block text-center">
+                            <span>Proceed to Checkout</span>
+                            <span class="material-symbols-outlined text-lg">arrow_forward</span>
                         </Link>
-                    </div>
-
-                    <div class="tonal-surface p-6">
-                        <p class="text-xs text-slate-500 leading-relaxed italic">
-                            Every item is carefully curated and inspected before shipping. 
-                        </p>
+                        <div class="mt-8 pt-8 border-t border-outline-variant/15">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <span class="material-symbols-outlined text-primary">verified</span>
+                                <p class="text-xs font-medium leading-relaxed">Secure transaction with 256-bit SSL encryption. We accept all major cards and digital wallets.</p>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="material-symbols-outlined text-primary">local_shipping</span>
+                                <p class="text-xs font-medium leading-relaxed">Complimentary climate-neutral shipping on all orders over $500.</p>
+                            </div>
+                        </div>
                     </div>
                 </aside>
             </div>
         </main>
-    </div>
+    </MainLayout>
 </template>

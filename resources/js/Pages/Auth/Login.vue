@@ -34,11 +34,11 @@ const submit = () => {
         <Head title="Sign In" />
 
         <div class="text-center mb-10">
-            <h1 class="text-2xl font-black tracking-tight text-slate-900 mb-2">Welcome Back</h1>
-            <p class="text-[10px] uppercase font-black tracking-widest text-slate-400">Enter your credentials to access your curate</p>
+            <h1 class="text-3xl font-headline font-black tracking-tight text-on-surface mb-2">Welcome Back</h1>
+            <p class="text-[10px] font-label uppercase font-bold tracking-[0.2em] text-on-surface-variant">Enter your credentials to access your curate</p>
         </div>
 
-        <div v-if="status" class="mb-6 rounded-xl bg-green-50 p-4 text-xs font-bold text-green-600">
+        <div v-if="status" class="mb-6 rounded-xl bg-primary-container p-4 text-xs font-bold text-on-primary-container">
             {{ status }}
         </div>
 
@@ -65,7 +65,7 @@ const submit = () => {
                     <Link
                         v-if="canResetPassword"
                         :href="route('password.request')"
-                        class="text-[10px] uppercase font-black tracking-widest text-slate-400 hover:text-slate-900 transition-colors"
+                        class="text-[10px] font-label uppercase font-bold tracking-[0.2em] text-on-surface-variant hover:text-primary transition-colors"
                     >
                         Forgot?
                     </Link>
@@ -85,12 +85,12 @@ const submit = () => {
 
             <div class="flex items-center">
                 <Checkbox name="remember" v-model:checked="form.remember" />
-                <span class="ms-2 text-[10px] uppercase font-black tracking-widest text-slate-400">Keep me signed in</span>
+                <span class="ms-2 text-[10px] font-label uppercase font-bold tracking-[0.2em] text-on-surface-variant">Keep me signed in</span>
             </div>
 
             <div class="pt-4">
                 <PrimaryButton
-                    class="w-full py-4 text-xs tracking-widest"
+                    class="w-full py-5 text-sm tracking-widest"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
@@ -98,11 +98,11 @@ const submit = () => {
                 </PrimaryButton>
             </div>
 
-            <div class="text-center pt-8 border-t border-slate-100">
-                <p class="text-[10px] uppercase font-black tracking-widest text-slate-400 mb-4">New to the collection?</p>
+            <div class="text-center pt-8 border-t border-outline-variant/15">
+                <p class="text-[10px] font-label uppercase font-bold tracking-[0.2em] text-on-surface-variant mb-4">New to the collection?</p>
                 <Link
                     :href="route('register')"
-                    class="text-[10px] uppercase font-black tracking-widest text-blue-600 hover:text-blue-800 transition-colors"
+                    class="text-[10px] font-label uppercase font-bold tracking-[0.2em] text-primary hover:text-primary-container transition-colors"
                 >
                     Create an Account
                 </Link>

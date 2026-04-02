@@ -1,37 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
     :root {
-        --background: 210 20% 98%; /* #f8f9fa */
-        --foreground: 222 47% 11%;
+        /* Core Palette */
         --primary: 221 100% 39%; /* #003ec7 */
-        --primary-foreground: 210 40% 98%;
-        --surface: 210 20% 98%;
-        --surface-container-highest: 210 10% 89%; /* #e1e3e4 */
+        --primary-container: 221 100% 50%; /* #0052ff */
+        --on-primary: 0 0% 100%;
+        
+        /* Surface Tonal Architecture */
+        --surface: 210 20% 98%; /* #f8f9fa */
+        --surface-container-lowest: 0 0% 100%; /* #ffffff */
+        --surface-container-low: 210 10% 96%; /* #f3f4f5 */
+        --surface-container: 210 10% 94%; /* #edeeef */
+        --surface-container-high: 210 10% 91%; /* #e7e8e9 */
+        
+        --on-surface: 197 10% 11%; /* #191c1d */
+        --on-surface-variant: 231 12% 30%; /* #434656 */
+        
+        --outline: 231 9% 49%; /* #737688 */
+        --outline-variant: 231 20% 81%; /* #c3c5d9 */
     }
 
     body {
-        @apply bg-[#f8f9fa] text-slate-900 antialiased;
+        @apply bg-[#f8f9fa] text-[#191c1d] antialiased selection:bg-[#0052ff] selection:text-white;
         font-family: 'Inter', sans-serif;
+    }
+
+    .font-display {
+        font-family: 'Manrope', sans-serif;
     }
 
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Manrope', sans-serif;
+        @apply tracking-tight font-extrabold;
     }
 }
 
 @layer components {
+    .glass-nav {
+        @apply sticky top-0 z-50 bg-[#f8f9fa]/80 backdrop-blur-[20px] transition-all duration-300;
+    }
+
+    .curator-pill {
+        @apply relative inline-flex items-center justify-center px-8 py-3.5 rounded-full font-bold text-white transition-all duration-300 overflow-hidden;
+        background: linear-gradient(135deg, #003ec7 0%, #0052ff 100%);
+    }
+
+    .curator-pill:hover {
+        @apply shadow-xl shadow-blue-500/20 scale-[1.03];
+    }
+
+    .curator-pill:active {
+        @apply scale-[0.98];
+    }
+
     .premium-card {
-        @apply bg-white rounded-2xl shadow-sm transition-all duration-300 hover:shadow-md;
+        @apply bg-white rounded-[2rem] p-6 transition-all duration-500 hover:scale-[1.01];
+        box-shadow: 0 12px 32px rgba(25, 28, 29, 0.04);
     }
 
-    .tonal-surface {
-        @apply bg-[#e1e3e4] rounded-xl transition-colors duration-300;
-    }
-
-    .pill-button {
-        @apply px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98];
+    .tray-section {
+        @apply -mt-20 relative z-10 bg-[#f3f4f5] rounded-t-[3rem] py-24 px-6;
     }
 }

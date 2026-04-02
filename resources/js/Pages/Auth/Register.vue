@@ -25,8 +25,8 @@ const submit = () => {
         <Head title="Create Account" />
 
         <div class="text-center mb-10">
-            <h1 class="text-2xl font-black tracking-tight text-slate-900 mb-2">Join the Collection</h1>
-            <p class="text-[10px] uppercase font-black tracking-widest text-slate-400">Create an account to save your curated selection</p>
+            <h1 class="text-3xl font-headline font-black tracking-tight text-on-surface mb-2">Join the Collection</h1>
+            <p class="text-[10px] font-label uppercase font-bold tracking-[0.2em] text-on-surface-variant">Create an account to save your curated selection</p>
         </div>
 
         <form @submit.prevent="submit" class="space-y-6">
@@ -99,7 +99,7 @@ const submit = () => {
 
             <div class="pt-4">
                 <PrimaryButton
-                    class="w-full py-4 text-xs tracking-widest"
+                    class="w-full py-5 text-sm tracking-widest"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
@@ -107,11 +107,11 @@ const submit = () => {
                 </PrimaryButton>
             </div>
 
-            <div class="text-center pt-8 border-t border-slate-100">
-                <p class="text-[10px] uppercase font-black tracking-widest text-slate-400 mb-4">Already a member?</p>
+            <div class="text-center pt-8 border-t border-outline-variant/15">
+                <p class="text-[10px] font-label uppercase font-bold tracking-[0.2em] text-on-surface-variant mb-4">Already a member?</p>
                 <Link
                     :href="route('login')"
-                    class="text-[10px] uppercase font-black tracking-widest text-blue-600 hover:text-blue-800 transition-colors"
+                    class="text-[10px] font-label uppercase font-bold tracking-[0.2em] text-primary hover:text-primary-container transition-colors"
                 >
                     Sign In instead
                 </Link>
